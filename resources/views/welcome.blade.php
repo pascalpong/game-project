@@ -240,7 +240,7 @@
               </div>
             </div>
             <div class="about__img">
-              <img src="{{ asset('imgs/about-img.png" />
+              <img src="{{ asset('imgs/about-img.png') }}" />
             </div>
           </div>
         </div>
