@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Game Project') }}</title>
         <!-- Custom .css -->
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/homePage.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+        <link rel="stylesheet" href="{{ asset('Header/header.css') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

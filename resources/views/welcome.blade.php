@@ -30,8 +30,12 @@
             </ul>
           </nav>
           <div class="header__buttons flex-between">
-            <a href="{{ route('login') }}" class="header__button button">Login</a>
-            <a href="{{ route('register') }}" class="header__button button">Registration</a>
+            @auth
+              <a href="{{ url('/dashboard') }}" class="header__button button">Dashboard</a>
+            @else
+              <a href="{{ route('login') }}" class="header__button button">Login</a>
+              <a href="{{ route('register') }}" class="header__button button">Registration</a>
+            @endauth
             <div class="header__select">
               <select class="select">
                 <option>English</option>
@@ -55,8 +59,12 @@
               quaerat
             </p>
             <div class="banner__buttons">
-              <div class="banner__buttons-register button-lg">Sign up</div>
-              <div class="banner__buttons-login button-lg">Sign In</div>
+            @auth
+
+            @else
+              <a href="{{ route('register') }}" class="banner__buttons-register button-lg">Sign up</a>
+              <a href="{{ route('login') }}" class="banner__buttons-login button-lg">Sign In</a>
+            @endauth
             </div>
           </div>
         </div>
@@ -109,94 +117,25 @@
             </p>
           </div>
           <div class="main__games-container">
+          @foreach ( $games as $game )
             <div class="game">
               <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
+                <img src="{{ $game->image }}" />
               </div>
               <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
+                <div class="game__content-name">{{ $game->name }}</div>
               </div>
               <div class="game__button">
-                <a class="button" href="">Play Now</a>
+                <a
+                @if (Auth::check())
+                  href="{{ $game->link }}"
+                @else
+                  href="{{ route('login') }}"
+                @endif
+                class="button" href="">Play Now</a>
               </div>
             </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
-            <div class="game">
-              <div class="game__img">
-                <img src="{{ asset('imgs/head-tail-game.jpg') }}" />
-              </div>
-              <div class="game__content">
-                <div class="game__content-name">Spin wheel</div>
-              </div>
-              <div class="game__button">
-                <a class="button" href="">Play Now</a>
-              </div>
-            </div>
+          @endforeach
           </div>
         </div>
       </div>
